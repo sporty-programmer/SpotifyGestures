@@ -16,4 +16,7 @@ Enable I2C on your Raspberry Pi
 Install required Python-Packages: 
  - dotenv
 
-Preparations should be complete now. If you want to run ist as a service (as I do), make sure it start after Internet connection is ready.
+Preparations should be complete now.
+
+If you want to run ist as a service (as I do),
+make sure it starts after Internet connection is ready.
