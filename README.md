@@ -1,11 +1,11 @@
 # SpotifyGestures
 Gesture control for Spotify via Raspberry Pi
 
-## Needed components:
+## Required components:
 - Raspberry Pi with Internet connection and HTTPS available
 - Grove Gesture Sensor (PAJ7620U2)
 - Jumper-Wires
-- possibly Crimp equipment (if wire endings do not fit DuPont)
+- Possibly Crimp equipment (if wire endings do not fit DuPont)
 - Spotify Application
 
 ### 1. Connect Pins as follows:
@@ -34,17 +34,18 @@ Gesture control for Spotify via Raspberry Pi
 > sudo apt install python3-dotenv python3-redis python3-urllib3 python3-requests
 
 ### 4. Insert code
-- .cache, .env, grove_gesture_sensor.py & main.py -> /usr/local/bin/SpotifyGestures
-- dowload <a href="https://github.com/spotipy-dev/spotipy/archive/refs/tags/2.25.1.zip">spotipy.zip</a> and paste spotipy-2.25.1/spotipy into project the directory
+- .env, grove_gesture_sensor.py & main.py -> /usr/local/bin/SpotifyGestures
+- Dowload <a href="https://github.com/spotipy-dev/spotipy/archive/refs/tags/2.25.1.zip">spotipy.zip</a> and paste spotipy-2.25.1/spotipy into the project directory
 - SpotifyGestures.service -> /etc/systemd/system
 
 ### 5. Configure settings
-- In .env, change the values from CLIENT_ID & CLIENT_SECRET to the values of your application
+- In .env, change the values from CLIENT_ID & CLIENT_SECRET to the values of your own Spotify Application
 - Execute create_cache.py on a Desktop-Device.\
   This will open Spotify in Firefox, where you need to login and give permissions to your Application.\
   After this, .cache contains the tokens your Applications needs.
+  Paste .cache into the preject directory.
 
-### 6. Run the following commands to start your service:
+### 6. Run the following commands to load, enable & start your service:
 - sudo systemctl daemon-reload
 - sudo systemctl enable SpotifyGestures.service
 - sudo systemctl start SpotifyGestures.service
