@@ -17,22 +17,3 @@ Install required Python-Packages:
  - dotenv
 
 Preparations should be complete now. If you want to run ist as a service (as I do), make sure it start after Internet connection is ready.
-
-My .service file looks as follows:
-
-[Unit]<br>
-Description=SpotifyGestures<br>
-Requires=network-online.target<br>
-After=network-online.target<br>
-
-[Service]<br>
-Type=simple<br>
-ExecStart=/usr/bin/python3 /usr/local/bin/SpotifyGestures/main.py<br>
-WorkingDirectory=/usr/local/bin/SpotifyGestures<br>
-Environment=PYTHONUNBUFFERED=1<br>
-Restart=on-failure<br>
-KillSignal=SIGINT<br>
-TimeoutStopSec=5<br>
-
-[Install]<br>
-WantedBy=multi-user.target<br>
