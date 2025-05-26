@@ -2,7 +2,7 @@
 Gesture control for Spotify via Raspberry Pi
 
 ## Needed components:
-- Raspberry Pi with Internet connection
+- Raspberry Pi with Internet connection and HTTPS available
 - Grove Gesture Sensor (PAJ7620U2)
 - Jumper-Wires
 - possibly Crimp equipment (if wire endings do not fit DuPont)
@@ -31,15 +31,17 @@ Gesture control for Spotify via Raspberry Pi
 - urllib3
 - requests
 
-> sudo apt install python-dotenv python-redis python-urllib3 python-requests
+> sudo apt install python3-dotenv python3-redis python3-urllib3 python3-requests
 
 ### 4. Insert code
 - spotipy, .cache, .env, grove_gesture_sensor.py & main.py -> /usr/local/bin/SpotifyGestures
 - SpotifyGestures.service -> /etc/systemd/system
 
 ### 5. Configure settings
-- In .cache, change the values from CLIENT_ID & CLIENT_SECRET to the values of your application
-- Important: To gain the required token, the script will once open a Firefox-Window, in which you need to login to Spotify.
+- In .env, change the values from CLIENT_ID & CLIENT_SECRET to the values of your application
+- Execute create_cache.py on a Desktop-Device.\
+  This will open Spotify in Firefox, where you need to login and give permissions to your Application.\
+  After this, .cache contains the tokens your Applications needs.
 
 ### 6. Run the following commands to start your service:
 - sudo systemctl daemon-reload
