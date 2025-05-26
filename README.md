@@ -34,7 +34,8 @@ Gesture control for Spotify via Raspberry Pi
 > sudo apt install python3-dotenv python3-redis python3-urllib3 python3-requests
 
 ### 4. Insert code
-- spotipy, .cache, .env, grove_gesture_sensor.py & main.py -> /usr/local/bin/SpotifyGestures
+- .cache, .env, grove_gesture_sensor.py & main.py -> /usr/local/bin/SpotifyGestures
+- dowload <a href="https://github.com/spotipy-dev/spotipy/archive/refs/tags/2.25.1.zip">spotipy.zip</a> and paste spotipy-2.25.1/spotipy into project the directory
 - SpotifyGestures.service -> /etc/systemd/system
 
 ### 5. Configure settings
