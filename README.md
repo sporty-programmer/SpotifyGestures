@@ -13,10 +13,8 @@ Gesture control for Spotify via Raspberry Pi
 - SDA -> GPIO2
 - SCL -> GPIO3
 
-> [!IMPORTANT]
 > Check if Pull-Up-Resistors are required and install them if neccessary.
 
-> [!NOTE]
 > Some models (as Raspberry Pi 5) have them built in.
 
 ### 2. Enable I2C on your Raspberry Pi
