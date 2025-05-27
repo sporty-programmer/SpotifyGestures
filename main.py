@@ -4,27 +4,34 @@ from time import sleep as delay
 
 from os import path, chdir
 
+import logging
+
 from dotenv import dotenv_values
 
 from spotipy import Spotify
 from spotipy.oauth2 import SpotifyOAuth
 
-from grove_gesture_sensor import gesture as GestureSensor # NOQA
+from grove_gesture_sensor import GestureSensor
 
 
 # PREPARATIONS
+
+# set current working directory
 chdir(cwd := path.dirname(path.realpath(__file__)))
+
+# silence spotipy warnings
+logging.getLogger('spotipy').setLevel(logging.ERROR)
 
 
 # INITIALIZE SPOTIPY
-client_data: dict[str, str] = dotenv_values()
+client_data: dict[str, str] = dotenv_values(f"{cwd}/data/spotipy.env")
 
 spotify: Spotify = Spotify(auth_manager=SpotifyOAuth(
     client_id=client_data["CLIENT_ID"],
     client_secret=client_data["CLIENT_SECRET"],
     redirect_uri="http://localhost:8080",
     scope="user-modify-playback-state user-read-playback-state user-read-currently-playing",
-    cache_path=f"{cwd}/.cache"
+    cache_path=f"{cwd}/data/spotipy.cache"
 ))
 
 print("Spotipy initialized.")
@@ -32,12 +39,12 @@ print("Spotipy initialized.")
 
 # INITIALIZE GESTURE SENSOR
 
-sensor: GestureSensor = GestureSensor()
+gesture_sensor: GestureSensor = GestureSensor()
 
 while True:
 
     try:
-        sensor.init()
+        gesture_sensor.init()
         break
 
     except IOError:
@@ -115,7 +122,7 @@ while True:
 
     try:
 
-        match sensor.return_gesture():
+        match gesture_sensor.return_gesture():
 
             case 1: # forward
                 toggle_play()
