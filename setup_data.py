@@ -43,7 +43,7 @@ cache_dir: str = f"{base_dir}/.cache"
 
 # create dir if necessary
 if not path.exists(base_dir):
-    makedirs(base_dir)
+    makedirs(base_dir, exist_ok=True)
 
 
 # GET CLIENT-DATA
