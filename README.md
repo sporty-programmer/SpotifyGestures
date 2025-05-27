@@ -34,16 +34,17 @@ Gesture control for Spotify via Raspberry Pi
 > sudo apt install python3-dotenv python3-redis python3-urllib3 python3-requests
 
 ### 4. Insert code
-- .env, grove_gesture_sensor.py & main.py -> /usr/local/bin/SpotifyGestures
-- Dowload <a href="https://github.com/spotipy-dev/spotipy/archive/refs/tags/2.25.1.zip">spotipy.zip</a> and paste spotipy-2.25.1/spotipy into the project directory
-- SpotifyGestures.service -> /etc/systemd/system
+- "main.py", "create_data.py" & "grove_gesture_sensor" -> "/usr/local/bin/SpotifyGestures"
+- Dowload <a href="https://github.com/spotipy-dev/spotipy/archive/refs/tags/2.25.1.zip">spotipy.zip</a> and paste "spotipy-2.25.1/spotipy" into the project directory
+- "SpotifyGestures.service" -> "/etc/systemd/system"
 
 ### 5. Configure settings
-- In .env, change the values from CLIENT_ID & CLIENT_SECRET to the values of your own Spotify Application
-- Execute create_cache.py on a Desktop-Device.\
-  This will open Spotify in Firefox, where you need to login and give permissions to your Application.\
-  After this, .cache contains the tokens your Applications needs.
-  Paste .cache into the preject directory.
+1. Execute "setup_data.py.py" on a Desktop-Device.\
+2. This will open Spotify in Firefox, where you need to login and give permissions to your Application.\
+3. After this, ".env" & ".cache" are created in "data/spotipy/".
+
+4. If you want to run the Script on a Device without a Desktop, like on a Raspi with a Lite-OS,\
+do Steps 1 to 3 on a Desktop-Device and copy the "data"-folder to the project directoy.
 
 ### 6. Run the following commands to load, enable & start your service:
 - sudo systemctl daemon-reload
